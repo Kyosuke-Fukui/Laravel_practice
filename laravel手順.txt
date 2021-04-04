@@ -1,0 +1,37 @@
+#初期設定(テーブル、モデル作成)
+
+##新規ディレクトリ作成
+composer create-project laravel/laravel myapp --prefer-dist
+
+##テーブルを作成するファイルを作成（database->migrations）
+php artisan make:migration create_books_table --create=books
+
+##テーブル作成
+php artisan migrate
+
+##モデル作成(app/Models)　//Eloquent model(SQL記述不要) 
+php artisan make:model Book
+
+
+#ルート作成(rootes/web.php)
+
+#ビュー作成(resources/views)
+
+#コントローラ作成(app/Http/Controllers/BooksController.php)
+php artisan make:controller BooksController(必ず大文字)
+
+#ページネーション設定
+モデル名::   ->pagination(表示件数)
+html内
+<div class="row">
+  <div>{{ $books->links()}}</div>
+</div>
+
+#ログイン認証機能
+
+##laravel/uiのパッケージを追加
+composer require laravel/ui --dev
+→Authentication scaffolding generated successfully.
+
+##各種ファイルに反映
+php artisan migrate
